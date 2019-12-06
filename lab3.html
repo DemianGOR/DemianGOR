@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	<label><input type="text" id="rows" value="10">Количество строк (rows)</label>
+	<label><input type="text" id="columns" value="10">Количество столбцов (columns)</label>
+	<label><input type="text" id="min" value="10">Случайное число от</label>
+	<label><input type="text" id="max" value="20">Случайное число до</label>
+	<p><label><input type="checkbox" id="checkbox" value="Рамка" style="margin-left: 15px">Рамка</label></p>
+	<button id="create" onclick="addTable()">Сгенерировать</button>
+	<button id="createRow" onclick="generateRow()">Сгенерировать</button>
+	<script>
+		function randomInteger(min, max) {
+            var rand = min + Math.random() * (max - min);
+            return Math.round(rand);
+        }
+        function addTable() {
+        	var body = document.querySelector("body"),
+        	rowValue = document.getElementById("rows"),
+        	colValue = document.getElementById("columns"),
+        	rows = rowValue.value,
+        	columns = colValue.value,
+        	tr = "",
+        	td = "",
+        	firstTable = document.querySelector("table"),
+        	minValue = Number(document.getElementById("min").value),
+        	maxValue = Number(document.getElementById("max").value);
+        	table = document.createElement("table"),
+        	checkbox = document.getElementById("checkbox");
+        	if (checkbox.checked == true) {
+        		table.setAttribute("border", "2px");
+        	} else {
+        		table.setAttribute("border", "0");
+        	}
+        	for (var i = 0; i < rows; i++) {
+        		tr = document.createElement("tr");
+        		for (var j = 0; j < columns; j++) {
+        			td = document.createElement("td");
+        			text = document.createTextNode(randomInteger(minValue, maxValue));
+
+        			td.appendChild(text);
+        			tr.appendChild(td);
+        		}
+        		table.appendChild(tr);
+        	}
+        	// Проверка и стилизация строк
+        	
+        	var odds = table.querySelectorAll('tr');
+        	odds.forEach(function (value, i){
+        		if (i == 0) {
+        			value.style.cssText = 'color: blue';
+        		} else if (i % 2 == 0) {
+        			value.style.cssText = 'color: green';
+        		} else {
+        			value.style.cssText = 'color: red';
+        		}
+        	})
+        	
+
+        	if (firstTable == null) {
+        		return body.appendChild(table);
+        	} else {
+        		let newTable = body.appendChild(table);
+        		return document.body.replaceChild(newTable, firstTable);
+        	}
+        	
+        }
+
+		function generateRow() {
+			setInterval(addNewRow, 1000);
+		}
+
+		function addNewRow() {
+			var colValue = document.getElementById("columns"),
+					columns = colValue.value,
+					minValue = Number(document.getElementById("min").value),
+					maxValue = Number(document.getElementById("max").value),
+					tableRef = document.querySelector("table"),
+					newRow = tableRef.insertRow(-1);
+
+
+
+
+
+			for (var j = 0; j < columns; j++) {
+				// Insert a cell in the row at index 0
+				var newCell = newRow.insertCell(-1);
+
+				var newText = document.createTextNode(randomInteger(minValue, maxValue));
+				newCell.appendChild(newText);
+			}
+
+		}
+    </script>
+
+
+
+</body>
+</html>
