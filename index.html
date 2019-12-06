@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <title>verstka</title>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+	<form class="data">
+    <table>
+        <tr>
+            <td><label for="loginField">Логин</label></td>
+            <td><input id="loginField" type="text" name="login"></td>
+        </tr>
+    </table>
+	<p align="center"><font size="5">Что вы любите к борщу?</font></p>
+	<div align="center"><font size="4">
+	<p><input type="checkbox" name="a" value="smet"> Сметанка</p>
+   <p><input type="checkbox" name="a" value="but"> Бутики</p>
+   <p><input type="checkbox" name="a" value="tea"> Чай</p>
+   <p><input type="checkbox" name="a" value="ukraine"> Сало</p>
+   <p><input type="checkbox" name="a" value="love_note"> Не люблю борщ</p>
+   <p><input class="submit" name="send" type="submit" value="Отправить"></p></font>
+   </div>
+   </form>
+   <script>
+   $(document).ready(()=>{
+
+$('.submit').click(()=>{
+
+    event.preventDefault()
+
+        $.ajax({
+
+            type:'POST',
+
+            url:'test.php',
+
+            data:$('.data').serialize(),
+
+            success:(data)=>{
+
+        alert(data)
+
+    }
+
+})
+
+})
+})
+</script>
+</body>
+</html>
