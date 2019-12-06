@@ -1,0 +1,63 @@
+.block {
+  margin-bottom: 20px;
+  padding: 10px;
+  text-align: center;
+  color: white;
+  background-color: blue;
+}
+
+.block-absolute {
+  position: absolute;
+  margin-bottom: 20px;
+  padding: 10px;
+  color: white;
+  background-color: rgba(255, 0, 0, 0.5);
+} 
+    div.first {
+    font-size: 150%;
+font-family: Snell Roundhand, cursive;
+    float: left; /* Обтекание по правому краю */
+    background: #fd0; /* Цвет фона */
+    border: 1px solid black; /* Параметры рамки */
+    padding: 10px; /* Поля вокруг текста */
+    margin-right: 20px; /* Отступ справа */
+    width: 40%; /* Ширина блока */
+   }
+#fir{
+	color: orange;
+	font-family: Trattatello, fantasy;
+	font-size: 200%;
+} 
+img.pix{
+        position: relative;
+        left: 250px;
+      } 
+
+       .contacts_khnure {
+    border-radius: 0 10px 10px 0;
+    width: 300px;
+    background: #333; /* Цвет фона */
+    color: #fff; /* Цвет текста */
+    position: fixed; /* Фиксируем на одном месте  */
+    min-height: 100px; /* Минимальная высота */
+    top: 100px; left: -320px;
+    border-right: 20px solid #fc0; /* Оранжевая граница справа */
+    padding: 10px;
+    transition: left 1s; /* Анимация */
+   }
+   .contacts_khnure img {
+    float: left;
+    margin: 0 10px 0 0;
+   }
+   .contacts_khnure::after {
+    content: 'Сайт ХНУРЕ'; /* Выводим текст */
+    color: #000; /* Цвет надписи */
+    position: absolute; /* Абсолютное позиционирование */
+    right: -60px; bottom: 50px;
+    transform: rotate(-90deg); /* Поворачиваем текст */
+    -webkit-transform: rotate(-90deg);
+   }
+   .contacts_khnure:hover {
+    left: 0; /* При наведении сдвигаем вправо */
+   }
+
